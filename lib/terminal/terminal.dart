@@ -61,10 +61,13 @@ class _TerminalOutputState extends State<TerminalOutput> {
                                 color: Colors.red,
                               ),
                             ),
-                            Text(
-                              key,
-                              style: TextStyle(
-                                color: Colors.white,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Text(
+                                key,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
