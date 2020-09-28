@@ -4,9 +4,9 @@ import 'package:mobile_terminal/terminal/terminal.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
-void main() {
-//  WidgetsFlutterBinding.ensureInitialized();
-//  Firebase.initializeApp();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MobileTerminal());
 }
 

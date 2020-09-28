@@ -10,7 +10,7 @@ class TerminalOutput extends StatefulWidget {
 }
 // ignore: non_constant_identifier_names
 class _TerminalOutputState extends State<TerminalOutput> {
-//  var fsconnect = FirebaseFirestore.instance;
+  var fsconnect = FirebaseFirestore.instance;
   static var screensize;
 
   static TextEditingController _textController = new TextEditingController();
@@ -114,9 +114,15 @@ class _TerminalOutputState extends State<TerminalOutput> {
                       ),
                       onFieldSubmitted: (_textController) async {
                         commandName = await _textController.toString();
-                        var url = "http://13.232.106.3/cgi-bin/$commandName.py";
+                        var url = "http://13.235.2.154/cgi-bin/$commandName.py";
                         var result = await http.get(url);
                         var data = result.body;
+                        String timestamp = DateTime.now().toString();
+                        fsconnect.collection("terminal_outputs").add({
+                          'commandName': commandName,
+                          'commandOutput': data,
+                          'timestamp': timestamp,
+                        });
                         setState(() {
                           output = data;
                         });
